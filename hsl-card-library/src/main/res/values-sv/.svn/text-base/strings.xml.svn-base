@@ -1,0 +1,109 @@
+<resources>
+
+    <string name="tag_discovered">TAG Discovered!</string>
+    <string name="tech_discovered">TECH Discovered!</string>
+    
+    <string name="unknown_card">Okänt kort</string>
+    <string name="card_read_failed">Kunde inte läsa kortet. Lägg telefonen mot kortet och håll den stilla, tills kortet är avläst.</string>
+    
+<!--     <string name="app_name">Mitt resekort</string> -->
+    <string name="app_name">Oma matkakortti</string>
+    <string name="hsl_logo_img">HSL logo</string>
+    <string name="hsl_card_img">HSL card</string>
+    <string name="kosketa_img">Touch the card -image</string>
+    
+    <string name="menu_languages">Välja språket</string>
+    <string name="menu_fi">Suomi</string>
+    <string name="menu_sv">Svenska</string>
+    <string name="menu_en">English</string>
+    <string name="menu_namecard">Namnge kortet</string>
+    <string name="menu_delname">Ta bort namnet</string>
+    <string name="menu_info">Uppgifter</string>
+
+	<string name="dlg_namecard_lbl">Ge namn för resekortet</string>
+	<string name="dlg_namecard_text">Du kan nämna den sista läste resekort</string>
+	<string name="dlg_ok">OK</string>
+	<string name="dlg_cancel">Avlysa</string>
+	<string name="dlg_removename_lbl">Ta bort namnet</string>
+
+	<string name="dlg_enable_nfc">Aktivera telefonens NFC-funktion från inställningarna för att läsa resekortet.</string>
+	<string name="dlg_nfc_off">NFC-funktionen är inte aktiverad.</string>
+	<string name="dlg_no_nfc">NFC-funktionen kunde inte hittas och resekortet kunde inte läsas.</string>
+	<string name="dlg_settings">Inställningar</string>
+					
+    <string name="info">Om applikationen</string>
+	<string name="info_text"><![CDATA[
+	    <p>Mer information om HRT och om undantags hittar du på adressen <a href="http://m.hsl.fi/">m.hsl.fi</a>.</p>
+	    <p>Mer information om applikationen hittar du på adressen 
+	    <a href="http://www.bonwal.com/omamatkakortti">www.bonwal.com/omamatkakortti</a>.</p>
+	    <p><b>Bruksanvisning:</b><br>Kontrollera från telefonens inställningar att NFC-funktionen är aktiverad. Peka på resekortet med telefonen och håll en stund. Kolla din telefon bruksanvisning för detaljerade anvisningar om NFC läsning.</p>
+	    <p><b>Utgivare:</b><br>Helsingforsregionens trafik</p>]]>
+	</string>
+    <string name="front_text">Lägg telefonen mot kortet</string>
+    <string name="singlecard_read">Engångskort</string>
+    <string name="travelcard_read">Resekort</string>
+    <string name="card_number"> </string>
+    <string name="validity">Biljettens uppgifter</string>
+    <string name="periods">Perioder</string>
+    <string name="value_on_card">Värde på kortet</string>
+    <string name="value_ticket">Senaste värdebiljett</string>
+
+    <string name="history">Senaste resor</string>
+	<string name="history_periodtr">Periodbiljett</string>
+	<string name="history_valuetr">Värdebiljett</string>
+	<string name="history_valuetr_price">Pris</string>
+	<string name="history_last_periodtr">Senaste periodbiljett</string>
+	<string name="history_last_valuetr">Senaste värdebiljett</string>
+	
+	<string name="boarding_line">Linje</string>
+	<string name="boarding_train">Tåg</string>
+	
+   	<string name="d0">Inte definierat</string>
+	<string name="d1">Helsingfors</string>
+	<string name="d2">Esbo</string>
+	<string name="d4">Vanda</string>
+	<string name="d5">Region</string>
+	<string name="d6">Kyrkslätt</string>
+	<string name="d7">Vichtis</string>
+	<string name="d8">Nurmijärvi</string>
+	<string name="d9">Kervo-Sibbo</string>
+	<string name="d10">Sibbo</string>
+	<string name="d14">Närområdet</string>
+	<string name="d15">Hela området</string>
+
+	<string name="v0">Inte definierat</string>
+	<string name="v1">Buss</string>
+	<string name="v2">Buss 2</string>
+	<string name="v3">Buss 3</string>
+	<string name="v4">Buss 4</string>
+	<string name="v5">Spårvagn</string>
+	<string name="v6">Metro</string>
+	<string name="v7">Tåg</string>		
+	<string name="v8">Färja</string>
+	<string name="v9">U-linje</string>
+  
+    <string name="NOTDEFINED">Inte definierat</string>
+	<string name="REGION">Region</string>
+    <string name="MINUTE">min</string>
+    <string name="HOUR">t</string>
+    <string name="ALLDAY">dygn</string>
+    <string name="DAYS">dagar</string>
+    <string name="ZONE">Zon</string>
+    <string name="GROUPSIZE">Gruppens storlek</string>
+    <string name="PCS">st</string>
+    <string name="CURRENCY">€</string>
+    <string name="VALIDITYTIME">Giltighetstid</string>
+    <string name="VALIDITYSTARTS">Biljetten börjar gälla vid den första stämplingen.</string>
+    <string name="VALIDITYLEFT">Återstående</string> 
+    <string name="VALIDITYNOTSTARTED">Ännu inte trätt i kraft</string> 
+<!--     <string name="LASTUSED">Senaste värdebiljett</string> -->
+    <string name="UNUSED">Ännu inte aktiverad</string>
+    <string name="USED">Inte längre i kraft</string>
+    <string name="VALID">I kraft</string>
+    <string name="VALID_UN">I kraft till</string>  <string name="VALID_TIL"></string>
+    <string name="VALIDCURRENTLY">I kraft tills vidare</string>
+    <string name="NOPERIODS">Inga perioder</string>
+    <string name="NOVALUE">Det finns inget värde på kortet</string>
+    <string name="NOVALUETICKET">Det finns ingen värdebiljett på kortet</string>
+    	
+</resources>
