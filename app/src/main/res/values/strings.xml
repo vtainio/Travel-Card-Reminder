@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Travel Card Reminder</string>
+    <string name="error.message.nfc_disabled">NFC is disabled.</string>
+    <string name="error.message.no_nfc_on_device">No NFC support for this device.</string>
 </resources>
