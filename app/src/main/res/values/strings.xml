@@ -1,5 +1,15 @@
 <resources>
     <string name="app_name">Travel Card Reminder</string>
+
     <string name="error.message.nfc_disabled">NFC is disabled.</string>
     <string name="error.message.no_nfc_on_device">No NFC support for this device.</string>
+    <string name="error.message.card_read_failure">Failed to read HSL travel card. Make sure to use the correct card and try again.</string>
+
+    <string name="error.label.card_read_failure">Reading travel card failed</string>
+
+    <string name="card_storage.name">cardStorage</string>
+    <string name="card_storage.value">cardValue</string>
+    <string name="card_storage.period">cardPeriod</string>
+
+    <string name="button.value.close">close</string>
 </resources>
