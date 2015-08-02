@@ -1,6 +1,10 @@
 Travel Card Reminder
 ====================
-Reminder application for HSL (Helsinki public transport) travel cards.
+Reminder application for Helsinki Regional Transport (HSL) travel cards.
+
+Google Play
+-----------
+This application is work in progress.
 
 Legal
 -------
