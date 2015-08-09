@@ -12,4 +12,6 @@
     <string name="card_storage.period">cardPeriod</string>
 
     <string name="button.value.close">close</string>
+
+    <string name="success.message.read_card">Travel card data saved.</string>
 </resources>

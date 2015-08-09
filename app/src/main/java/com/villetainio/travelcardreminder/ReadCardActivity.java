@@ -88,6 +88,9 @@ public class ReadCardActivity extends Activity {
             editor.putString(getString(R.string.card_storage_value), value);
             editor.apply();
 
+            Toast.makeText(getApplicationContext(), R.string.success_message_read_card, Toast.LENGTH_LONG)
+                    .show();
+
             moveToMainActivity();
         }
     }
