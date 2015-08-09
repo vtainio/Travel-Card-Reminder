@@ -18,9 +18,11 @@ package com.villetainio.travelcardreminder;
 
 import android.app.Activity;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.IntentFilter.MalformedMimeTypeException;
+import android.content.SharedPreferences;
 import android.nfc.NfcAdapter;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -28,7 +30,7 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
-    private TextView infoView;
+    private TextView periodStatusView, cardValueView, nfcStatusView;
     private NfcAdapter nfcAdapter;
 
     @Override
@@ -36,7 +38,9 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        infoView = (TextView) findViewById(R.id.viewTest);
+        periodStatusView = (TextView) findViewById(R.id.periodStatus);
+        cardValueView = (TextView) findViewById(R.id.cardValue);
+        nfcStatusView = (TextView) findViewById(R.id.nfcStatus);
 
         nfcAdapter = NfcAdapter.getDefaultAdapter(this);
 
@@ -45,10 +49,21 @@ public class MainActivity extends Activity {
             finish();
         }
 
+        SharedPreferences cardStorage = getSharedPreferences(getString(R.string.card_storage_name),
+                Context.MODE_PRIVATE);
+        String periodStatus = cardStorage.getString(getString(R.string.card_storage_period), "");
+        String cardValue = cardStorage.getString(getString(R.string.card_storage_value), "");
+
+        if (!periodStatus.equals("")) {
+            periodStatusView.setText(periodStatus);
+        }
+
+        if (!cardValue.equals("")) {
+            cardValueView.setText(cardValue);
+        }
+
         if (!nfcAdapter.isEnabled()) {
-            infoView.setText(R.string.error_message_nfc_disabled);
-        } else {
-            infoView.setText(R.string.app_name);
+            nfcStatusView.setText(R.string.error_message_nfc_disabled);
         }
     }
 

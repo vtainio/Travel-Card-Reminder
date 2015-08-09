@@ -4,9 +4,23 @@
     >
 
     <TextView
-        android:id="@+id/viewTest"
-        android:layout_width="match_parent"
+        android:id="@+id/periodStatus"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        />
+
+    <TextView
+        android:id="@+id/cardValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/periodStatus"
+        />
+
+    <TextView
+        android:id="@+id/nfcStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cardValue"
         />
 
 </RelativeLayout>
