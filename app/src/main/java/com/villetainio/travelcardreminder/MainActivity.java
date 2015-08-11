@@ -28,6 +28,8 @@ import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Date;
+
 public class MainActivity extends Activity {
 
     private TextView periodStatusView, cardValueView, nfcStatusView;
@@ -48,14 +50,22 @@ public class MainActivity extends Activity {
             Toast.makeText(this, R.string.error_message_no_nfc_on_device, Toast.LENGTH_LONG).show();
             finish();
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setupForegroundDispatch(this, nfcAdapter);
 
         SharedPreferences cardStorage = getSharedPreferences(getString(R.string.card_storage_name),
                 Context.MODE_PRIVATE);
-        String periodStatus = cardStorage.getString(getString(R.string.card_storage_period), "");
+        String periodStart = cardStorage.getString(getString(R.string.card_storage_period_start), "");
+        String periodEnd = cardStorage.getString(getString(R.string.card_storage_period_end), "");
         String cardValue = cardStorage.getString(getString(R.string.card_storage_value), "");
 
-        if (!periodStatus.equals("")) {
-            periodStatusView.setText(periodStatus);
+        if (!periodStart.equals("") && !periodEnd.equals("")) {
+            int days = calculateRemainingPeriodDays(periodStart, periodEnd);
+            periodStatusView.setText(String.valueOf(days));
         }
 
         if (!cardValue.equals("")) {
@@ -65,12 +75,7 @@ public class MainActivity extends Activity {
         if (!nfcAdapter.isEnabled()) {
             nfcStatusView.setText(R.string.error_message_nfc_disabled);
         }
-    }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        setupForegroundDispatch(this, nfcAdapter);
     }
 
     @Override
@@ -101,5 +106,12 @@ public class MainActivity extends Activity {
 
     public static void stopForegroundDispatch(final Activity activity, NfcAdapter adapter) {
         adapter.disableForegroundDispatch(activity);
+    }
+
+    public int calculateRemainingPeriodDays(String start, String end) {
+        Date startDate = new Date(start);
+        Date endDate = new Date(end);
+
+        return (int) (startDate.getTime() - endDate.getTime()) / (1000 * 60 * 60 * 24);
     }
 }

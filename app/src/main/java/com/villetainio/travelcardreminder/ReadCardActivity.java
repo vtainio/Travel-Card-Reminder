@@ -31,6 +31,7 @@ import com.hsl.cardproducts.TravelCard;
 import com.hsl.example.CardOperations;
 
 import java.io.IOException;
+import java.util.Date;
 
 public class ReadCardActivity extends Activity {
 
@@ -79,12 +80,18 @@ public class ReadCardActivity extends Activity {
             alert.show();
 
         } else {
-            String period1 = CardOperations.getTravelCardPeriod1Validity(card, getApplicationContext());
+            // Get most recent period information from the card.
+            Date start = card.getPeriodStartDate1();
+            Date end = card.getPeriodEndDate1();
             String value = CardOperations.getTravelCardValue(card);
 
             SharedPreferences cardStorage = getSharedPreferences(getString(R.string.card_storage_name), Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = cardStorage.edit();
-            editor.putString(getString(R.string.card_storage_period), period1);
+
+            if (start != null && end != null) {
+                editor.putString(getString(R.string.card_storage_period_start), start.toString());
+                editor.putString(getString(R.string.card_storage_period_end), end.toString());
+            }
             editor.putString(getString(R.string.card_storage_value), value);
             editor.apply();
 
