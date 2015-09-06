@@ -65,7 +65,11 @@ public class MainActivity extends Activity {
 
         if (!periodStart.equals("") && !periodEnd.equals("")) {
             int days = calculateRemainingPeriodDays(periodStart, periodEnd);
-            periodStatusView.setText(String.valueOf(days));
+            if (days > 0) {
+                periodStatusView.setText(String.valueOf(days));
+            } else {
+                periodStatusView.setText(R.string.status_message_period_not_valid);
+            }
         }
 
         if (!cardValue.equals("")) {
