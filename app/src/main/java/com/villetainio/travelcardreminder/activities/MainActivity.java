@@ -14,72 +14,47 @@
 * limitations under the License.
 */
 
-package com.villetainio.travelcardreminder;
+package com.villetainio.travelcardreminder.activities;
 
 import android.app.Activity;
 import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.IntentFilter.MalformedMimeTypeException;
-import android.content.SharedPreferences;
 import android.nfc.NfcAdapter;
 import android.os.Bundle;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.Date;
+import com.villetainio.travelcardreminder.R;
+import com.villetainio.travelcardreminder.fragments.StatusFragment;
 
 public class MainActivity extends Activity {
 
-    private TextView periodStatusView, cardValueView, nfcStatusView;
+    //private TextView periodStatusView, cardValueView;
     private NfcAdapter nfcAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        periodStatusView = (TextView) findViewById(R.id.periodStatus);
-        cardValueView = (TextView) findViewById(R.id.cardValue);
-        nfcStatusView = (TextView) findViewById(R.id.nfcStatus);
-
         nfcAdapter = NfcAdapter.getDefaultAdapter(this);
 
         if (nfcAdapter == null) {
             Toast.makeText(this, R.string.error_message_no_nfc_on_device, Toast.LENGTH_LONG).show();
             finish();
         }
-    }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        setupForegroundDispatch(this, nfcAdapter);
-
-        SharedPreferences cardStorage = getSharedPreferences(getString(R.string.card_storage_name),
-                Context.MODE_PRIVATE);
-        String periodStart = cardStorage.getString(getString(R.string.card_storage_period_start), "");
-        String periodEnd = cardStorage.getString(getString(R.string.card_storage_period_end), "");
-        String cardValue = cardStorage.getString(getString(R.string.card_storage_value), "");
-
-        if (!periodStart.equals("") && !periodEnd.equals("")) {
-            int days = calculateRemainingPeriodDays(periodStart, periodEnd);
-            if (days > 0) {
-                periodStatusView.setText(String.valueOf(days));
-            } else {
-                periodStatusView.setText(R.string.status_message_period_not_valid);
+        if (savedInstanceState == null) {
+            getFragmentManager().beginTransaction()
+                        .add(R.id.main_container, new StatusFragment())
+                        .commit();
             }
         }
 
-        if (!cardValue.equals("")) {
-            cardValueView.setText(cardValue);
-        }
-
-        if (!nfcAdapter.isEnabled()) {
-            nfcStatusView.setText(R.string.error_message_nfc_disabled);
-        }
-
+        @Override
+        protected void onResume() {
+            super.onResume();
+            setupForegroundDispatch(this, nfcAdapter);
     }
 
     @Override
@@ -110,12 +85,5 @@ public class MainActivity extends Activity {
 
     public static void stopForegroundDispatch(final Activity activity, NfcAdapter adapter) {
         adapter.disableForegroundDispatch(activity);
-    }
-
-    public int calculateRemainingPeriodDays(String start, String end) {
-        Date startDate = new Date(start);
-        Date endDate = new Date(end);
-
-        return (int) (startDate.getTime() - endDate.getTime()) / (1000 * 60 * 60 * 24);
     }
 }

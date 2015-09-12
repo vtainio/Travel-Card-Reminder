@@ -13,7 +13,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-package com.villetainio.travelcardreminder;
+package com.villetainio.travelcardreminder.activities;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -29,6 +29,8 @@ import android.widget.Toast;
 
 import com.hsl.cardproducts.TravelCard;
 import com.hsl.example.CardOperations;
+
+import com.villetainio.travelcardreminder.R;
 
 import java.io.IOException;
 import java.util.Date;
@@ -91,6 +93,8 @@ public class ReadCardActivity extends Activity {
             if (start != null && end != null) {
                 editor.putString(getString(R.string.card_storage_period_start), start.toString());
                 editor.putString(getString(R.string.card_storage_period_end), end.toString());
+                editor.putString(getString(R.string.card_storage_period_days_remaining),
+                        String.valueOf(calculateRemainingPeriodDays(start.toString(), end.toString())));
             }
             editor.putString(getString(R.string.card_storage_value), value);
             editor.apply();
@@ -105,5 +109,15 @@ public class ReadCardActivity extends Activity {
     private void moveToMainActivity() {
         Intent mainIntent = new Intent(this, MainActivity.class);
         startActivity(mainIntent);
+    }
+
+    public int calculateRemainingPeriodDays(String start, String end) {
+        if (!start.isEmpty() && !end.isEmpty()) {
+            Date startDate = new Date(start);
+            Date endDate = new Date(end);
+
+            return (int) (startDate.getTime() - endDate.getTime()) / (1000 * 60 * 60 * 24);
+        }
+        return 0;
     }
 }

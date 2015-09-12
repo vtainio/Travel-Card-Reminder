@@ -11,6 +11,7 @@
     <string name="card_storage.value">cardValue</string>
     <string name="card_storage.period_start">cardPeriodStartDate</string>
     <string name="card_storage.period_end">cardPeriodEndDate</string>
+    <string name="card_storage.period_days_remaining">cardPeriodDaysRemaining</string>
 
     <string name="button.value.close">close</string>
 
