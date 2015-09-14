@@ -30,7 +30,6 @@ import com.villetainio.travelcardreminder.fragments.StatusFragment;
 
 public class MainActivity extends Activity {
 
-    //private TextView periodStatusView, cardValueView;
     private NfcAdapter nfcAdapter;
 
     @Override

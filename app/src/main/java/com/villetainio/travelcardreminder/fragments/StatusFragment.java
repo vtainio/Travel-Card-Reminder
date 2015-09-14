@@ -27,8 +27,6 @@ import android.widget.TextView;
 import com.villetainio.travelcardreminder.R;
 import com.villetainio.travelcardreminder.TravelCardReminder;
 
-import org.w3c.dom.Text;
-
 public class StatusFragment extends Fragment {
     SharedPreferences cardStorage;
 
