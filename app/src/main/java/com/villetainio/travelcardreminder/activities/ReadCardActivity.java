@@ -103,6 +103,7 @@ public class ReadCardActivity extends Activity {
                     .show();
 
             moveToMainActivity();
+            finish();
         }
     }
 

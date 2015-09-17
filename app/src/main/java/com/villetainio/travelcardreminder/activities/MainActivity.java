@@ -47,13 +47,13 @@ public class MainActivity extends Activity {
             getFragmentManager().beginTransaction()
                         .add(R.id.main_container, new StatusFragment())
                         .commit();
-            }
         }
+    }
 
-        @Override
-        protected void onResume() {
-            super.onResume();
-            setupForegroundDispatch(this, nfcAdapter);
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setupForegroundDispatch(this, nfcAdapter);
     }
 
     @Override
