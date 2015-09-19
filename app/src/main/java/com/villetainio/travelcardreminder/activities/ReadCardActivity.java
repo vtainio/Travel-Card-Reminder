@@ -17,7 +17,6 @@ package com.villetainio.travelcardreminder.activities;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -31,9 +30,9 @@ import com.hsl.cardproducts.TravelCard;
 import com.hsl.example.CardOperations;
 
 import com.villetainio.travelcardreminder.R;
+import com.villetainio.travelcardreminder.TravelCardReminder;
 
 import java.io.IOException;
-import java.util.Calendar;
 import java.util.Date;
 
 public class ReadCardActivity extends Activity {
@@ -92,13 +91,14 @@ public class ReadCardActivity extends Activity {
             short length = card.getLoadedPeriodLength();
             String value = CardOperations.getTravelCardValue(card);
 
-            SharedPreferences cardStorage = getSharedPreferences(getString(R.string.card_storage_name), Context.MODE_PRIVATE);
+            SharedPreferences cardStorage = TravelCardReminder.cardStorage;
             SharedPreferences.Editor editor = cardStorage.edit();
 
             if (start != null) {
-                editor.putString(getString(R.string.card_storage_period_days_remaining),
-                        String.valueOf(calculateRemainingPeriodDays(start.toString(), length)));
+                editor.putString(getString(R.string.card_storage_period_start),
+                        start.toString());
             }
+            editor.putString(getString(R.string.card_storage_period_length), String.valueOf(length));
             editor.putString(getString(R.string.card_storage_value), value);
             editor.apply();
 
@@ -113,18 +113,5 @@ public class ReadCardActivity extends Activity {
     private void moveToMainActivity() {
         Intent mainIntent = new Intent(this, MainActivity.class);
         startActivity(mainIntent);
-    }
-
-    private int calculateRemainingPeriodDays(String start, short periodLength) {
-        if (start != null && periodLength != 0) {
-            Date startDate = new Date(start);
-            Calendar startCalendar = Calendar.getInstance();
-            startCalendar.setTime(startDate);
-            Calendar today = Calendar.getInstance();
-
-            long daysBetween = (today.getTimeInMillis() - startCalendar.getTimeInMillis()) / (24 * 60 * 60 * 1000);
-            return (int) Math.max(periodLength - daysBetween, 0);
-        }
-        return 0;
     }
 }
