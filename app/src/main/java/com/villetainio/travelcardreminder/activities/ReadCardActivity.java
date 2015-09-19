@@ -115,7 +115,7 @@ public class ReadCardActivity extends Activity {
         startActivity(mainIntent);
     }
 
-    public int calculateRemainingPeriodDays(String start, short periodLength) {
+    private int calculateRemainingPeriodDays(String start, short periodLength) {
         if (start != null && periodLength != 0) {
             Date startDate = new Date(start);
             Calendar startCalendar = Calendar.getInstance();

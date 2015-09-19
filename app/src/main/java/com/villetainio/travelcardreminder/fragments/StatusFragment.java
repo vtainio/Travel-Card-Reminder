@@ -45,9 +45,11 @@ public class StatusFragment extends Fragment {
         TextView cardValue = (TextView) statusView.findViewById(R.id.cardValue);
 
         periodStatus.setText(TravelCardReminder.cardStorage.getString(
-                getString(R.string.card_storage_period_days_remaining), "No period value"));
+                getString(R.string.card_storage_period_days_remaining),
+                getString(R.string.status_message_period_not_valid)));
         cardValue.setText(TravelCardReminder.cardStorage.getString(
-                getString(R.string.card_storage_value), "No value"));
+                getString(R.string.card_storage_value),
+                getString(R.string.status_message_no_value)));
 
         return statusView;
     }

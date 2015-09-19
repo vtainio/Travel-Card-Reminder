@@ -17,7 +17,8 @@
 
     <string name="success.message.read_card">Travel card data saved.</string>
 
-    <string name="status.message.period_not_valid">No period.</string>
+    <string name="status.message.period_not_valid">No valid period</string>
+    <string name="status.message.no_value">No value</string>
 
     <string name="settings.title">Settings</string>
 </resources>
