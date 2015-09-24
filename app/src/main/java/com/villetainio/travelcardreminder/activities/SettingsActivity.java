@@ -19,19 +19,12 @@ import android.app.Activity;
 import android.os.Bundle;
 
 import com.villetainio.travelcardreminder.R;
-import com.villetainio.travelcardreminder.fragments.SettingsFragment;
 
 public class SettingsActivity extends Activity {
 
     @Override public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-
-        if (savedInstanceState == null) {
-            getFragmentManager().beginTransaction()
-                    .add(R.id.settings_container, new SettingsFragment())
-                    .commit();
-        }
     }
 
     @Override

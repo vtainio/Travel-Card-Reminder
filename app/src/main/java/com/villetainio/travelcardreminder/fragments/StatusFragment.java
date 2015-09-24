@@ -15,9 +15,9 @@
 */
 package com.villetainio.travelcardreminder.fragments;
 
-import android.app.Fragment;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,11 +31,24 @@ import java.util.Date;
 
 public class StatusFragment extends Fragment {
     SharedPreferences cardStorage;
+    private String title;
+    private int page;
+
+    public static StatusFragment newInstance(int page, String title) {
+        StatusFragment statusFragment = new StatusFragment();
+        Bundle args = new Bundle();
+        args.putInt("fragmentPage", page);
+        args.putString("fragmentTitle", title);
+        statusFragment.setArguments(args);
+        return statusFragment;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         cardStorage = TravelCardReminder.cardStorage;
+        title = getArguments().getString("fragmentTitle");
+        page = getArguments().getInt("fragmentPage");
     }
 
     @Override

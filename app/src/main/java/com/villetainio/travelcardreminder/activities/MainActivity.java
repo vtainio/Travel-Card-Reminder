@@ -16,6 +16,7 @@
 
 package com.villetainio.travelcardreminder.activities;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.Intent;
@@ -23,14 +24,18 @@ import android.content.IntentFilter;
 import android.content.IntentFilter.MalformedMimeTypeException;
 import android.nfc.NfcAdapter;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.ViewPager;
 import android.widget.Toast;
 
 import com.villetainio.travelcardreminder.R;
-import com.villetainio.travelcardreminder.fragments.StatusFragment;
+import com.villetainio.travelcardreminder.view.TravelCardPagerAdapter;
 
-public class MainActivity extends Activity {
+public class MainActivity extends FragmentActivity {
 
     private NfcAdapter nfcAdapter;
+    TravelCardPagerAdapter pagerAdapter;
+    ViewPager pager;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -43,10 +48,42 @@ public class MainActivity extends Activity {
             finish();
         }
 
-        if (savedInstanceState == null) {
-            getFragmentManager().beginTransaction()
-                        .add(R.id.main_container, new StatusFragment())
-                        .commit();
+        pagerAdapter = new TravelCardPagerAdapter(getSupportFragmentManager());
+        pager = (ViewPager) findViewById(R.id.pager);
+        pager.setAdapter(pagerAdapter);
+
+        ActionBar actionBar = getActionBar();
+        if (actionBar != null) {
+            actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+
+            ActionBar.TabListener tabListener = new ActionBar.TabListener() {
+                @Override
+                public void onTabSelected(ActionBar.Tab tab, android.app.FragmentTransaction ft) {
+                    pager.setCurrentItem(tab.getPosition());
+                }
+
+                @Override
+                public void onTabUnselected(ActionBar.Tab tab, android.app.FragmentTransaction ft) {
+                    // Unselect
+                }
+
+                @Override
+                public void onTabReselected(ActionBar.Tab tab, android.app.FragmentTransaction ft) {
+                    // Reselect
+                }
+            };
+
+            actionBar.addTab(
+                    actionBar.newTab()
+                            .setText("Status")
+                            .setTabListener(tabListener)
+            );
+
+            actionBar.addTab(
+                    actionBar.newTab()
+                            .setText("Settings")
+                            .setTabListener(tabListener)
+            );
         }
     }
 

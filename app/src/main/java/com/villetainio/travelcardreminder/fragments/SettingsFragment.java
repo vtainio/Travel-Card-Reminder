@@ -15,8 +15,8 @@
 */
 package com.villetainio.travelcardreminder.fragments;
 
-import android.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,14 +24,28 @@ import android.view.ViewGroup;
 import com.villetainio.travelcardreminder.R;
 
 public class SettingsFragment extends Fragment {
+    private String title;
+    private int page;
+
+    public static SettingsFragment newInstance(int page, String title) {
+        SettingsFragment settingsFragment = new SettingsFragment();
+        Bundle args = new Bundle();
+        args.putInt("fragmentPage", page);
+        args.putString("fragmentTitle", title);
+        settingsFragment.setArguments(args);
+        return settingsFragment;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        title = getArguments().getString("fragmentTitle");
+        page = getArguments().getInt("fragmentPage");
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstance) {
-        return inflater.inflate(R.layout.settings_fragment, container, false);
+        View view = inflater.inflate(R.layout.settings_fragment, container, false);
+        return view;
     }
 }
