@@ -38,9 +38,9 @@ public class TravelCardPagerAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return StatusFragment.newInstance(0, "Status");
+                return new StatusFragment();
             case 1:
-                return SettingsFragment.newInstance(1, "Settings");
+                return new SettingsFragment();
             default:
                 return null;
         }
