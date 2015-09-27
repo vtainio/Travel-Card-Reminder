@@ -15,10 +15,19 @@
     <string name="button.value.close">close</string>
 
     <string name="success.message.read_card">Travel card data saved.</string>
+    <string name="success.message.save_settings">Settings saved.</string>
 
     <string name="status.message.period_not_valid">No valid period</string>
     <string name="status.message.no_value">No value</string>
 
     <string name="settings.title">Settings</string>
-    <string name="settings.days_pick">How many days before?</string>
+    <string name="settings.enable_notifications">enableNotifications</string>
+    <string name="settings.hours">settingsHours</string>
+    <string name="settings.minutes">settingsMinutes</string>
+    <string name="settings.days">settingsDays</string>
+
+    <string name="settings.label.days_pick">How many days before?</string>
+    <string name="settings.label.enable_notifications">Enable notifications</string>
+    <string name="settings.label.time_pick">At what time?</string>
+    <string name="settings.label.save">Save</string>
 </resources>
