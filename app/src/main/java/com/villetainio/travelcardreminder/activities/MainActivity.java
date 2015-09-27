@@ -24,17 +24,18 @@ import android.content.IntentFilter.MalformedMimeTypeException;
 import android.nfc.NfcAdapter;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.view.ViewPager;
 import android.widget.Toast;
 
 import com.villetainio.travelcardreminder.R;
 import com.villetainio.travelcardreminder.view.TravelCardPagerAdapter;
 
+import fr.castorflex.android.verticalviewpager.VerticalViewPager;
+
 public class MainActivity extends FragmentActivity {
 
     private NfcAdapter nfcAdapter;
     TravelCardPagerAdapter pagerAdapter;
-    ViewPager pager;
+    VerticalViewPager pager;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -48,7 +49,7 @@ public class MainActivity extends FragmentActivity {
         }
 
         pagerAdapter = new TravelCardPagerAdapter(getSupportFragmentManager());
-        pager = (ViewPager) findViewById(R.id.pager);
+        pager = (VerticalViewPager) findViewById(R.id.pager);
         pager.setAdapter(pagerAdapter);
 
         ActionBar actionBar = getActionBar();

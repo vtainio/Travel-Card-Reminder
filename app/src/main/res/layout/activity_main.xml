@@ -4,23 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.villetainio.travelcardreminder.activities.MainActivity"
+    android:background="@color/material_blue_grey_800"
     tools:ignore="MergeRootFrame" >
 
-    <android.support.v4.view.ViewPager
+    <fr.castorflex.android.verticalviewpager.VerticalViewPager
         android:id="@+id/pager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <android.support.v4.view.PagerTitleStrip
-            android:id="@+id/pagerTitleStrip"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top"
-            android:background="@color/material_blue_grey_950"
-            android:textColor="#fff"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp" />
-    </android.support.v4.view.ViewPager>
+        android:layout_height="wrap_content" >
+    </fr.castorflex.android.verticalviewpager.VerticalViewPager>
 
 </FrameLayout>

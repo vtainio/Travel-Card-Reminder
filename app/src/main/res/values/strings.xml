@@ -20,4 +20,5 @@
     <string name="status.message.no_value">No value</string>
 
     <string name="settings.title">Settings</string>
+    <string name="settings.days_pick">How many days before?</string>
 </resources>
