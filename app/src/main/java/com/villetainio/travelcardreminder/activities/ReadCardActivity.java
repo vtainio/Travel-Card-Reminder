@@ -83,32 +83,36 @@ public class ReadCardActivity extends Activity {
             alert.show();
 
         } else {
-            // Get most recent period information from the card.
-            Date start = card.getPeriodStartDate2();
-            if (start == null) {
-                start = card.getPeriodStartDate1();
-            }
-
-            short length = card.getLoadedPeriodLength();
-            String value = CardOperations.getTravelCardValue(card);
-
-            SharedPreferences cardStorage = TravelCardReminder.cardStorage;
-            SharedPreferences.Editor editor = cardStorage.edit();
-
-            if (start != null) {
-                editor.putString(getString(R.string.card_storage_period_start),
-                        start.toString());
-            }
-            editor.putString(getString(R.string.card_storage_period_length), String.valueOf(length));
-            editor.putString(getString(R.string.card_storage_value), value);
-            editor.apply();
+            readAndStoreCardData(card);
 
             Toast.makeText(getApplicationContext(), R.string.success_message_read_card, Toast.LENGTH_LONG)
                     .show();
-
             moveToMainActivity();
             finish();
         }
+    }
+
+    private void readAndStoreCardData(TravelCard card) {
+        // Get most recent period information from the card.
+        Date start = card.getPeriodStartDate2();
+        if (start == null) {
+            start = card.getPeriodStartDate1();
+        }
+
+        short length = card.getLoadedPeriodLength();
+        String value = CardOperations.getTravelCardValue(card);
+
+        SharedPreferences cardStorage = TravelCardReminder.cardStorage;
+        SharedPreferences.Editor editor = cardStorage.edit();
+
+        if (start != null) {
+            editor.putString(getString(R.string.card_storage_period_start),
+                    start.toString());
+        }
+        editor.putString(getString(R.string.card_storage_period_length), String.valueOf(length));
+        editor.putString(getString(R.string.card_storage_value), value);
+        editor.apply();
+
     }
 
     private void moveToMainActivity() {

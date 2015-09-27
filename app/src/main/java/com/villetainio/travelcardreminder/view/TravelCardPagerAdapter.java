@@ -36,25 +36,11 @@ public class TravelCardPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        switch (position) {
-            case 0:
-                return new StatusFragment();
-            case 1:
-                return new SettingsFragment();
-            default:
-                return null;
-        }
+        return position == 0 ? new StatusFragment() : new SettingsFragment();
     }
 
     @Override
     public CharSequence getPageTitle(int position) {
-        switch (position) {
-            case 0:
-                return "Status";
-            case 1:
-                return "Settings";
-            default:
-                return null;
-        }
+        return position == 0 ? "Status" : "Settings";
     }
 }
