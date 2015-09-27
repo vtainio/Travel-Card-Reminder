@@ -8,7 +8,7 @@ This application is work in progress.
 
 Legal
 -------
-This application is licensed under the [Apache License (2.0)](https://github.com/Wisheri/Travel-Card-Reminder/blob/master/LICENSE.md)
+This application is licensed under the [Apache License (2.0)](https://github.com/Wisheri/Travel-Card-Reminder/blob/master/LICENSE)
 
 ```
 Copyright 2015 Ville Tainio
