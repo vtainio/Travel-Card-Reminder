@@ -27,6 +27,7 @@ import android.support.v4.app.FragmentActivity;
 import android.widget.Toast;
 
 import com.villetainio.travelcardreminder.R;
+import com.villetainio.travelcardreminder.TravelCardReminder;
 import com.villetainio.travelcardreminder.view.TravelCardPagerAdapter;
 
 import fr.castorflex.android.verticalviewpager.VerticalViewPager;

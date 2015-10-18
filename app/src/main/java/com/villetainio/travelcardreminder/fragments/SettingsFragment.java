@@ -47,15 +47,26 @@ public class SettingsFragment extends Fragment {
         CheckBox enableNotificationsView = (CheckBox) view.findViewById(R.id.enable_notifications);
         boolean enableNotifications = cardStorage.getBoolean(
                 getString(R.string.settings_enable_notifications),
-                true
-        );
+                true);
         enableNotificationsView.setChecked(enableNotifications);
 
         // Day to start notifications is 3 days before by default.
         int days = cardStorage.getInt(getString(R.string.settings_days), 3);
+
+        // Maximum days to start notifications days left for the period
+        // or 30 days if there isn't a valid period on the card.
+        TravelCardReminder app = (TravelCardReminder) getActivity().getApplication();
+        int daysLeft = app.calculateStatus();
+
         NumberPicker numberPicker = (NumberPicker) view.findViewById(R.id.days_pick);
         numberPicker.setMinValue(0);
-        numberPicker.setMaxValue(5); //TODO get current days left
+
+        if (daysLeft > 0) {
+            numberPicker.setMaxValue(app.calculateStatus());
+        } else {
+            numberPicker.setMaxValue(30);
+        }
+        numberPicker.setValue(days);
 
         // Time to start notifications is 12.00 by default.
         int hours = cardStorage.getInt(getString(R.string.settings_hours), 12);
@@ -81,6 +92,7 @@ public class SettingsFragment extends Fragment {
 
     private void saveValues(View view) {
         SharedPreferences.Editor editor = cardStorage.edit();
+
         // Enable notifications
         editor.putBoolean(
                 getString(R.string.settings_enable_notifications),

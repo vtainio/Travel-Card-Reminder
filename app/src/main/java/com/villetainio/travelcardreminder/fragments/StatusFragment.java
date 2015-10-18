@@ -26,9 +26,6 @@ import android.widget.TextView;
 import com.villetainio.travelcardreminder.R;
 import com.villetainio.travelcardreminder.TravelCardReminder;
 
-import java.util.Calendar;
-import java.util.Date;
-
 public class StatusFragment extends Fragment {
     SharedPreferences cardStorage;
 
@@ -45,13 +42,9 @@ public class StatusFragment extends Fragment {
         TextView periodStatus = (TextView) statusView.findViewById(R.id.periodStatus);
         TextView cardValue = (TextView) statusView.findViewById(R.id.cardValue);
 
-        String start = cardStorage.getString(
-                getString(R.string.card_storage_period_start),
-                null);
-        short periodLength = Short.valueOf(cardStorage.getString(
-                getString(R.string.card_storage_period_length),
-                "0"));
-        int daysRemaining = calculateRemainingPeriodDays(start, periodLength);
+        TravelCardReminder app = (TravelCardReminder) getActivity().getApplication();
+        int daysRemaining = app.calculateStatus();
+
         if (daysRemaining > 0) {
             periodStatus.setText(String.valueOf(daysRemaining));
         } else {
@@ -64,16 +57,4 @@ public class StatusFragment extends Fragment {
         return statusView;
     }
 
-    private int calculateRemainingPeriodDays(String start, short periodLength) {
-        if (start != null && periodLength != 0) {
-            Date startDate = new Date(start);
-            Calendar startCalendar = Calendar.getInstance();
-            startCalendar.setTime(startDate);
-            Calendar today = Calendar.getInstance();
-
-            long daysBetween = (today.getTimeInMillis() - startCalendar.getTimeInMillis()) / (24 * 60 * 60 * 1000);
-            return (int) Math.max(periodLength - daysBetween, 0);
-        }
-        return 0;
-    }
 }
